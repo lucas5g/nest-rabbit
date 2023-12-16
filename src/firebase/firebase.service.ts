@@ -9,14 +9,15 @@ export class FirebaseService {
 
   constructor(@Inject('FirebaseAdmin') private firebaseAdmin: admin.app.App){}
 
-  sendCloudMessaging(){
+  sendCloudMessaging({title, body, token}: {title:string, body:string, token:string}){
 
     const message = {
       notification:{
-        title: 'vai uma mensagem',
-        body:'veja as novas mensagens'
+        title,
+        body
       },
-      token:'da8PiuRJSfmofGyZxNAhO9:APA91bGT_VPhglyd5LoVesjc5QZ-LbLzEkxJDfrhB6k4MQ_rpSQEb2qUA0-Kc9D5-BmBWHJM4qf9Y6Sg0DG42nkV53X-nc3mTQweej1wQJRQnGvfyrdhBbf8bmIBHgQNdmyyX_o8eBYH'
+      token
+      // token:'da8PiuRJSfmofGyZxNAhO9:APA91bGT_VPhglyd5LoVesjc5QZ-LbLzEkxJDfrhB6k4MQ_rpSQEb2qUA0-Kc9D5-BmBWHJM4qf9Y6Sg0DG42nkV53X-nc3mTQweej1wQJRQnGvfyrdhBbf8bmIBHgQNdmyyX_o8eBYH'
     }
   try{
     this.firebaseAdmin.messaging().send(message)

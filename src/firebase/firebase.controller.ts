@@ -9,7 +9,13 @@ export class FirebaseController {
 
   @Get('send-cloud-messaging')
   sendCloudMessaging(){
-    return this.firebaseService.sendCloudMessaging()
+    const data = {
+      title: 'Lucas de sousa',
+      body:'Bom dia, tudo bem?',
+      token:'da8PiuRJSfmofGyZxNAhO9:APA91bGT_VPhglyd5LoVesjc5QZ-LbLzEkxJDfrhB6k4MQ_rpSQEb2qUA0-Kc9D5-BmBWHJM4qf9Y6Sg0DG42nkV53X-nc3mTQweej1wQJRQnGvfyrdhBbf8bmIBHgQNdmyyX_o8eBYH'
+
+    }
+    return this.firebaseService.sendCloudMessaging(data)
   }
   @Post()
   create(@Body() createFirebaseDto: CreateFirebaseDto) {
